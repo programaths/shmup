@@ -1,0 +1,59 @@
+[gd_scene load_steps=8 format=3 uid="uid://c87bws1kti2bs"]
+
+[ext_resource type="Texture2D" uid="uid://djjhg6ekl353m" path="res://Assets/Building/spaceBuilding_016.png" id="1_8gkj6"]
+[ext_resource type="Script" path="res://half_gate.gd" id="1_myvsh"]
+[ext_resource type="Animation" uid="uid://cdfborwv5o4t3" path="res://Open.tres" id="2_bevbt"]
+
+[sub_resource type="Animation" id="Animation_rp0ry"]
+length = 0.001
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_meo8g"]
+size = Vector2(202.5, 27)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6alc7"]
+size = Vector2(203, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_loo5m"]
+size = Vector2(203, 17)
+
+[node name="Gate" type="Node2D"]
+script = ExtResource( "1_myvsh" )
+
+[node name="Part1" type="AnimatableBody2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Part1"]
+reset_on_save = false
+anims/Open = ExtResource( "2_bevbt" )
+anims/RESET = SubResource( "Animation_rp0ry" )
+
+[node name="SpaceBuilding016" type="Sprite2D" parent="Part1"]
+position = Vector2(102, 0)
+texture = ExtResource( "1_8gkj6" )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Part1"]
+position = Vector2(102.591, 0)
+shape = SubResource( "RectangleShape2D_meo8g" )
+
+[node name="Part2" type="AnimatableBody2D" parent="Part1"]
+position = Vector2(2, -2)
+
+[node name="SpaceBuilding017" type="Sprite2D" parent="Part1/Part2"]
+position = Vector2(304, 2.2)
+scale = Vector2(1, 0.8)
+texture = ExtResource( "1_8gkj6" )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Part1/Part2"]
+position = Vector2(304, 2.2)
+shape = SubResource( "RectangleShape2D_6alc7" )
+
+[node name="Part3" type="AnimatableBody2D" parent="Part1/Part2"]
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Part1/Part2/Part3"]
+position = Vector2(506.5, 1.89999)
+shape = SubResource( "RectangleShape2D_loo5m" )
+
+[node name="SpaceBuilding018" type="Sprite2D" parent="Part1/Part2/Part3"]
+position = Vector2(507, 2.39999)
+scale = Vector2(1, 0.6)
+texture = ExtResource( "1_8gkj6" )

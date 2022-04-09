@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://bkicxbrsxy1hp"]
+
+[ext_resource type="Script" path="res://missile_e_1.gd" id="1_al1lw"]
+[ext_resource type="Texture2D" uid="uid://bpot2yr2tc7np" path="res://Assets/Missiles/spaceMissiles_038.png" id="2_2b706"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ipa3c"]
+radius = 3.78
+height = 13.65
+
+[node name="MissileE1" type="RigidDynamicBody2D"]
+collision_layer = 2
+gravity_scale = 0.0
+contacts_reported = 1
+script = ExtResource( "1_al1lw" )
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource( "2_2b706" )
+flip_v = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( "CapsuleShape2D_ipa3c" )
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

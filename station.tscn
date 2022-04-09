@@ -1,0 +1,62 @@
+[gd_scene load_steps=5 format=3 uid="uid://dql4lenvbxxjo"]
+
+[ext_resource type="Script" path="res://station.gd" id="1_e60u8"]
+[ext_resource type="Texture2D" uid="uid://d2221c6phyw30" path="res://Assets/Station/spaceStation_026.png" id="1_gbuju"]
+[ext_resource type="PackedScene" uid="uid://dt5a6kuqma2k1" path="res://bullet_spawner.tscn" id="2_3u1rr"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tbn1j"]
+radius = 11.0
+height = 159.02
+
+[node name="Area2D" type="RigidDynamicBody2D"]
+process_mode = 4
+gravity_scale = 0.0
+script = ExtResource( "1_e60u8" )
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource( "1_gbuju" )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, -1)
+shape = SubResource( "CapsuleShape2D_tbn1j" )
+
+[node name="BulletSpawner" parent="." instance=ExtResource( "2_3u1rr" )]
+position = Vector2(27, -13)
+rotation = -1.5708
+
+[node name="BulletSpawner2" parent="." instance=ExtResource( "2_3u1rr" )]
+position = Vector2(27, 11)
+rotation = -1.5708
+
+[node name="BulletSpawner3" parent="." instance=ExtResource( "2_3u1rr" )]
+position = Vector2(27, 35)
+rotation = -1.5708
+
+[node name="BulletSpawner4" parent="." instance=ExtResource( "2_3u1rr" )]
+position = Vector2(27, 59)
+rotation = -1.5708
+
+[node name="BulletSpawner5" parent="." instance=ExtResource( "2_3u1rr" )]
+position = Vector2(-28, -14)
+rotation = 1.5708
+
+[node name="BulletSpawner6" parent="." instance=ExtResource( "2_3u1rr" )]
+position = Vector2(-28, 10)
+rotation = 1.5708
+
+[node name="BulletSpawner7" parent="." instance=ExtResource( "2_3u1rr" )]
+position = Vector2(-28, 34)
+rotation = 1.5708
+
+[node name="BulletSpawner8" parent="." instance=ExtResource( "2_3u1rr" )]
+position = Vector2(-28, 58)
+rotation = 1.5708
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+process_mode = 3
+position = Vector2(5.68434e-14, 0)
+scale = Vector2(6.5, 8.85)
+
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

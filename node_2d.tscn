@@ -1,0 +1,245 @@
+[gd_scene load_steps=13 format=3 uid="uid://d0x0nciapsi8f"]
+
+[ext_resource type="Script" path="res://Node2D.gd" id="1_4r6p5"]
+[ext_resource type="Shader" path="res://node_2d.gdshader" id="1_cclgw"]
+[ext_resource type="PackedScene" uid="uid://xcootsmlrlqu" path="res://Player.tscn" id="3_pwi7r"]
+[ext_resource type="Texture2D" uid="uid://cths5gery7doa" path="res://Assets/black.png" id="4_i1ff8"]
+[ext_resource type="Script" path="res://BG.gd" id="4_iobsh"]
+[ext_resource type="Script" path="res://Camera2D.gd" id="6_1psnb"]
+[ext_resource type="PackedScene" uid="uid://c1bxgnlax5uxf" path="res://wave_enemy_1.tscn" id="7_he67o"]
+[ext_resource type="PackedScene" uid="uid://dql4lenvbxxjo" path="res://station.tscn" id="8_cinjw"]
+[ext_resource type="PackedScene" uid="uid://dd0hnorbm40kk" path="res://tower_1.tscn" id="9_4ix02"]
+[ext_resource type="PackedScene" uid="uid://b0mgr7m2ijxkb" path="res://rotating_tower.tscn" id="10_njkow"]
+[ext_resource type="PackedScene" uid="uid://d1ythd6ae2rml" path="res://gates_section.tscn" id="11_8mqjp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1jmig"]
+shader = ExtResource( "1_cclgw" )
+
+[node name="Node2D" type="Node2D"]
+material = SubResource( "ShaderMaterial_1jmig" )
+position = Vector2(-2, 0)
+script = ExtResource( "1_4r6p5" )
+metadata/_edit_vertical_guides_ = [1023.0]
+
+[node name="Player" parent="." instance=ExtResource( "3_pwi7r" )]
+position = Vector2(525, 507)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="BG" type="Sprite2D" parent="CanvasLayer"]
+texture_filter = 1
+texture_repeat = 2
+texture = ExtResource( "4_i1ff8" )
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 1024, 600)
+script = ExtResource( "4_iobsh" )
+
+[node name="LabelHits" type="Label" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "HITS: 0"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(515, 301)
+current = true
+script = ExtResource( "6_1psnb" )
+
+[node name="WaveEnemy1" parent="." instance=ExtResource( "7_he67o" )]
+position = Vector2(119, -110)
+
+[node name="WaveEnemy2" parent="." instance=ExtResource( "7_he67o" )]
+position = Vector2(516, -111)
+
+[node name="WaveEnemy3" parent="." instance=ExtResource( "7_he67o" )]
+position = Vector2(929, -120)
+
+[node name="WaveEnemy4" parent="." instance=ExtResource( "7_he67o" )]
+position = Vector2(316, -382)
+
+[node name="WaveEnemy6" parent="." instance=ExtResource( "7_he67o" )]
+position = Vector2(145, -559)
+
+[node name="WaveEnemy7" parent="." instance=ExtResource( "7_he67o" )]
+position = Vector2(553, -563)
+
+[node name="WaveEnemy8" parent="." instance=ExtResource( "7_he67o" )]
+position = Vector2(934, -576)
+
+[node name="WaveEnemy5" parent="." instance=ExtResource( "7_he67o" )]
+position = Vector2(747, -369)
+
+[node name="WaveEnemy9" parent="." instance=ExtResource( "7_he67o" )]
+position = Vector2(368, -960)
+
+[node name="WaveEnemy10" parent="." instance=ExtResource( "7_he67o" )]
+position = Vector2(172, -961)
+
+[node name="WaveEnemy11" parent="." instance=ExtResource( "7_he67o" )]
+position = Vector2(580, -965)
+
+[node name="WaveEnemy12" parent="." instance=ExtResource( "7_he67o" )]
+position = Vector2(961, -978)
+
+[node name="WaveEnemy13" parent="." instance=ExtResource( "7_he67o" )]
+position = Vector2(773, -958)
+
+[node name="Area2D" parent="." instance=ExtResource( "8_cinjw" )]
+position = Vector2(68, -1236)
+
+[node name="Area2D2" parent="." instance=ExtResource( "8_cinjw" )]
+position = Vector2(927, -1488)
+
+[node name="Tower1" parent="." instance=ExtResource( "9_4ix02" )]
+position = Vector2(163, -1903)
+Player = NodePath("../Player")
+
+[node name="Tower2" parent="." instance=ExtResource( "9_4ix02" )]
+position = Vector2(886, -1904)
+Player = NodePath("../Player")
+
+[node name="Tower3" parent="." instance=ExtResource( "9_4ix02" )]
+position = Vector2(515, -2425)
+Player = NodePath("../Player")
+
+[node name="Tower4" parent="." instance=ExtResource( "9_4ix02" )]
+position = Vector2(135, -3099)
+Player = NodePath("../Player")
+
+[node name="Tower5" parent="." instance=ExtResource( "9_4ix02" )]
+position = Vector2(526, -3090)
+Player = NodePath("../Player")
+
+[node name="Tower6" parent="." instance=ExtResource( "9_4ix02" )]
+position = Vector2(908, -3086)
+Player = NodePath("../Player")
+
+[node name="RotatingTower" parent="." instance=ExtResource( "10_njkow" )]
+position = Vector2(516, -3887)
+
+[node name="RotatingTower2" parent="." instance=ExtResource( "10_njkow" )]
+position = Vector2(180, -4607)
+
+[node name="RotatingTower4" parent="." instance=ExtResource( "10_njkow" )]
+position = Vector2(529, -5844)
+
+[node name="RotatingTower3" parent="." instance=ExtResource( "10_njkow" )]
+position = Vector2(816, -4627)
+spin_factor = -1
+
+[node name="GatesSection" parent="." instance=ExtResource( "11_8mqjp" )]
+position = Vector2(-1, -5284)
+
+[node name="Tower7" parent="." instance=ExtResource( "9_4ix02" )]
+position = Vector2(99, -5840)
+Player = NodePath("../Player")
+
+[node name="Tower9" parent="." instance=ExtResource( "9_4ix02" )]
+position = Vector2(441, -7240)
+Player = NodePath("../Player")
+
+[node name="Tower10" parent="." instance=ExtResource( "9_4ix02" )]
+position = Vector2(596, -7239)
+Player = NodePath("../Player")
+
+[node name="Tower8" parent="." instance=ExtResource( "9_4ix02" )]
+position = Vector2(919, -5848)
+Player = NodePath("../Player")
+
+[node name="Area2D3" parent="." instance=ExtResource( "8_cinjw" )]
+position = Vector2(82, -6342)
+
+[node name="Area2D4" parent="." instance=ExtResource( "8_cinjw" )]
+position = Vector2(477, -6521)
+
+[node name="Area2D5" parent="." instance=ExtResource( "8_cinjw" )]
+position = Vector2(903, -6702)
+
+[node name="WaveEnemy14" parent="." instance=ExtResource( "7_he67o" )]
+position = Vector2(166, -7548)
+
+[node name="WaveEnemy16" parent="." instance=ExtResource( "7_he67o" )]
+position = Vector2(338, -8081)
+
+[node name="WaveEnemy17" parent="." instance=ExtResource( "7_he67o" )]
+position = Vector2(506, -8280)
+
+[node name="WaveEnemy18" parent="." instance=ExtResource( "7_he67o" )]
+position = Vector2(678, -8082)
+
+[node name="WaveEnemy15" parent="." instance=ExtResource( "7_he67o" )]
+position = Vector2(855, -7541)
+
+[node name="GatesSection2" parent="." instance=ExtResource( "11_8mqjp" )]
+position = Vector2(-2, -8840)
+
+[node name="RotatingTower5" parent="." instance=ExtResource( "10_njkow" )]
+position = Vector2(56, -9283)
+
+[node name="RotatingTower6" parent="." instance=ExtResource( "10_njkow" )]
+position = Vector2(521, -9283)
+spin_factor = 3
+
+[node name="RotatingTower8" parent="." instance=ExtResource( "10_njkow" )]
+position = Vector2(86, -10105)
+spin_factor = 3
+
+[node name="RotatingTower10" parent="." instance=ExtResource( "10_njkow" )]
+position = Vector2(84, -10943)
+
+[node name="RotatingTower11" parent="." instance=ExtResource( "10_njkow" )]
+position = Vector2(503, -11131)
+
+[node name="RotatingTower12" parent="." instance=ExtResource( "10_njkow" )]
+position = Vector2(899, -10919)
+
+[node name="RotatingTower9" parent="." instance=ExtResource( "10_njkow" )]
+position = Vector2(929, -10101)
+spin_factor = -3
+
+[node name="RotatingTower7" parent="." instance=ExtResource( "10_njkow" )]
+position = Vector2(971, -9276)
+
+[node name="Tower11" parent="." instance=ExtResource( "9_4ix02" )]
+position = Vector2(70, -11802)
+Player = NodePath("../Player")
+
+[node name="Tower12" parent="." instance=ExtResource( "9_4ix02" )]
+position = Vector2(338, -11804)
+Player = NodePath("../Player")
+
+[node name="Tower13" parent="." instance=ExtResource( "9_4ix02" )]
+position = Vector2(614, -11802)
+Player = NodePath("../Player")
+
+[node name="Tower14" parent="." instance=ExtResource( "9_4ix02" )]
+position = Vector2(895, -11800)
+Player = NodePath("../Player")
+
+[node name="WaveEnemy19" parent="." instance=ExtResource( "7_he67o" )]
+position = Vector2(123, -12432)
+
+[node name="WaveEnemy24" parent="." instance=ExtResource( "7_he67o" )]
+position = Vector2(228, -12601)
+
+[node name="WaveEnemy25" parent="." instance=ExtResource( "7_he67o" )]
+position = Vector2(425, -12597)
+
+[node name="WaveEnemy26" parent="." instance=ExtResource( "7_he67o" )]
+position = Vector2(620, -12599)
+
+[node name="WaveEnemy27" parent="." instance=ExtResource( "7_he67o" )]
+position = Vector2(806, -12591)
+
+[node name="WaveEnemy20" parent="." instance=ExtResource( "7_he67o" )]
+position = Vector2(318, -12430)
+
+[node name="WaveEnemy21" parent="." instance=ExtResource( "7_he67o" )]
+position = Vector2(506, -12429)
+
+[node name="WaveEnemy22" parent="." instance=ExtResource( "7_he67o" )]
+position = Vector2(704, -12428)
+
+[node name="WaveEnemy23" parent="." instance=ExtResource( "7_he67o" )]
+position = Vector2(886, -12424)

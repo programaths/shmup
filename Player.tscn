@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://xcootsmlrlqu"]
+
+[ext_resource type="Script" path="res://Player.gd" id="1_koa5t"]
+[ext_resource type="Texture2D" uid="uid://dadtgdq0paax" path="res://Assets/Ships/spaceShips_001.png" id="1_q72lk"]
+[ext_resource type="Texture2D" uid="uid://c3hxulwra2dnr" path="res://Assets/Effects/spaceEffects_002.png" id="2_ql304"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xcum2"]
+
+[node name="Node2D" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource( "1_koa5t" )
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.2, -0.2)
+texture = ExtResource( "1_q72lk" )
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+show_behind_parent = true
+position = Vector2(0, 17.465)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource( "2_ql304" )
+offset = Vector2(0, 23)
+flip_v = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( "CircleShape2D_xcum2" )
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]

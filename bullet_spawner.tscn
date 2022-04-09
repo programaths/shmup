@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://dt5a6kuqma2k1"]
+
+[ext_resource type="Script" path="res://BulletSpawner.gd" id="1_cd6oy"]
+
+[node name="BulletSpawner" type="Position2D"]
+script = ExtResource( "1_cd6oy" )
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

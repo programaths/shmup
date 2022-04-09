@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://dd0hnorbm40kk"]
+
+[ext_resource type="Script" path="res://tower_1.gd" id="1_3b5lr"]
+[ext_resource type="Texture2D" uid="uid://lgc4d8u5vb27" path="res://Assets/Building/spaceBuilding_017.png" id="1_lhmsi"]
+[ext_resource type="Texture2D" uid="uid://c43gq3ty6dm1r" path="res://Assets/Building/spaceBuilding_020.png" id="2_l43fn"]
+[ext_resource type="Script" path="res://Canon.gd" id="3_bjvja"]
+[ext_resource type="PackedScene" uid="uid://dt5a6kuqma2k1" path="res://bullet_spawner.tscn" id="5_7b288"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rcq8t"]
+size = Vector2(42, 42)
+
+[node name="Tower1" type="StaticBody2D"]
+process_mode = 4
+script = ExtResource( "1_3b5lr" )
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource( "1_lhmsi" )
+
+[node name="Canon" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource( "2_l43fn" )
+offset = Vector2(18, 0)
+script = ExtResource( "3_bjvja" )
+
+[node name="BulletSpawner" parent="Canon" instance=ExtResource( "5_7b288" )]
+position = Vector2(80, 0)
+rotation = -1.57079
+scale = Vector2(2, 2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-4.76837e-07, 0)
+shape = SubResource( "RectangleShape2D_rcq8t" )
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+process_mode = 3
+position = Vector2(0.5, 1.49999)
+scale = Vector2(6.05, 5.35)
+
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

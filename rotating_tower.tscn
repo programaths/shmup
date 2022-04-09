@@ -1,0 +1,85 @@
+[gd_scene load_steps=6 format=3 uid="uid://b0mgr7m2ijxkb"]
+
+[ext_resource type="Texture2D" uid="uid://bml8tnm56whu0" path="res://Assets/Building/spaceBuilding_009.png" id="1_lsha4"]
+[ext_resource type="Script" path="res://rotating_tower.gd" id="1_slws7"]
+[ext_resource type="Texture2D" uid="uid://c43gq3ty6dm1r" path="res://Assets/Building/spaceBuilding_020.png" id="2_gkt7e"]
+[ext_resource type="PackedScene" uid="uid://dt5a6kuqma2k1" path="res://bullet_spawner.tscn" id="3_ssxui"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qttli"]
+radius = 21.0238
+
+[node name="RotatingTower" type="StaticBody2D"]
+process_mode = 4
+script = ExtResource( "1_slws7" )
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource( "1_lsha4" )
+
+[node name="Position2D" type="Position2D" parent="."]
+
+[node name="SpaceBuilding020" type="Sprite2D" parent="Position2D"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource( "2_gkt7e" )
+offset = Vector2(18, 0)
+
+[node name="SpaceBuilding021" type="Sprite2D" parent="Position2D"]
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+texture = ExtResource( "2_gkt7e" )
+offset = Vector2(18, 0)
+
+[node name="SpaceBuilding022" type="Sprite2D" parent="Position2D"]
+rotation = 3.14159
+scale = Vector2(0.5, 0.5)
+texture = ExtResource( "2_gkt7e" )
+offset = Vector2(18, 0)
+
+[node name="SpaceBuilding023" type="Sprite2D" parent="Position2D"]
+rotation = 4.71239
+scale = Vector2(0.5, 0.5)
+texture = ExtResource( "2_gkt7e" )
+offset = Vector2(18, 0)
+
+[node name="BulletSpawner" parent="Position2D" instance=ExtResource( "3_ssxui" )]
+position = Vector2(39, 0)
+rotation = -1.5708
+
+[node name="Timer" parent="Position2D/BulletSpawner" index="0"]
+wait_time = 0.2
+
+[node name="BulletSpawner2" parent="Position2D" instance=ExtResource( "3_ssxui" )]
+position = Vector2(0, -41)
+rotation = -3.14159
+
+[node name="Timer" parent="Position2D/BulletSpawner2" index="0"]
+wait_time = 0.2
+
+[node name="BulletSpawner3" parent="Position2D" instance=ExtResource( "3_ssxui" )]
+position = Vector2(-44, 0)
+rotation = -4.71239
+
+[node name="Timer" parent="Position2D/BulletSpawner3" index="0"]
+wait_time = 0.2
+
+[node name="BulletSpawner4" parent="Position2D" instance=ExtResource( "3_ssxui" )]
+position = Vector2(0, 38)
+
+[node name="Timer" parent="Position2D/BulletSpawner4" index="0"]
+wait_time = 0.2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( "CircleShape2D_qttli" )
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+process_mode = 3
+position = Vector2(-0.5, -0.499997)
+scale = Vector2(4.75, 4.35)
+
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+
+[editable path="Position2D/BulletSpawner"]
+[editable path="Position2D/BulletSpawner2"]
+[editable path="Position2D/BulletSpawner3"]
+[editable path="Position2D/BulletSpawner4"]
